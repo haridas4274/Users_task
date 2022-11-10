@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crud ajax</title>
+</head>
+<link rel="stylesheet" href="cnd/bootstrap.css">
+<style>
+    a {
+        border-radius: 4px;
+        padding: 2px 10px;
+    }
+
+    .admin {
+        height: 100vh;
+    }
+
+    .nav {
+        height: 90vh;
+    }
+</style>
+<!-- <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"> -->
+
+<body>
+    <script src="js/jquery.js"></script>
+    <script src="cnd/bootstrap_js.js"></script>
+    <script src="js/script.js"></script>
+    <div class="container-fluid h-100 admin">
+
+        <div class="row">
+            <div class="col-12 my-0  text-center h-25 py-3 text-capitalize bg-light font-bold h2 text-primary">CUSTOMERS DETAIL</div>
+        </div>
+        <div class="row  nav">
+            <div class="col-3 text-bg-dark bg-primary p-3">
+                <h2>Admin</h2>
+                <hr>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        My Customer
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item active" href="#" id="addCustomer">Add customer</a></li>
+                        <!-- <li>
+                            <hr class="dropdown-divider">
+                        </li> -->
+                        <li><a class="dropdown-item" id="customerList">Customers list</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-9 bg-light " id="display">
+                <div class="row d-flex justify-content-center align-content-center" id="default">
+                    <h1 class="display-2 text-center mt-1 font-bolder">WELLCOME</h1>
+                </div>
+                <div class="row" id="insert">
+
+                </div>
+                <div class="row" id="result">
+                    
+
+                    
+                </div>
+                <!--        
+        <button class="btn btn-outline-success btn-sm" id="dwnd"> <a class="text-decoration-none text-bg-success"
+                href="php/export.php">download XL</a></button>
+        <button class="btn btn-outline-danger btn-sm" id="printBtn"> <a class="text-decoration-none text-bg-danger"
+                href="php/print.php?action=print" target="blank">Print</a></button>
+
+        <table id="table" class="tablePrinte mx-auto table-bordered mt-3 w-100 align-center">
+        </table> -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="js/main.js"></script> -->
+    <script>
+
+        $(document).ready(function () {
+
+
+            $("#addCustomer").click(function () {
+
+                // saveformNew();
+                $.ajax({
+                    url: "addcustomer.php",
+                    type: "post",
+                    success: function (data) {
+                        //  alert(data);
+                        $("#insert").html(data);
+                        $("#insert").show();
+                        $("#result").hide();
+                    }
+                })
+            });
+
+
+           function showtable(){
+            $("#customerList").click(function () {
+                $.ajax({
+                    url: "php/list",
+                    type: "post",
+                    data: '',
+                    success: function (data) {
+                        // console.log(data);
+                        $("#result").html(data);
+                        $("#result").show();
+                        $("#insert").hide();
+                    }
+                })
+            })
+           }
+           showtable();
+           
+        });
+
+    </script>
+
+</body>
+
+</html>
