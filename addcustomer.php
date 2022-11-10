@@ -1,5 +1,5 @@
 <h1 class="text-center mt-2 h3 font-bold">Insert Your details</h1>
-<form action=" method=" POST" id="formAll" class="form w-50 mx-auto mt-2">
+<form action=" "method=" POST" id="formAll" class="form w-50 mx-auto mt-2">
     <input type="hidden" name="id" id="getId">
     <input type="text" name="name" id="name" placeholder="Enter Your Name" class="form-control " required>
     <div class="row mt-3">
