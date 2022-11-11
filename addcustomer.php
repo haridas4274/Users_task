@@ -1,5 +1,5 @@
 <h1 class="text-center mt-2 h3 font-bold">Insert Your details</h1>
-<form action=" "method=" POST" id="formAll" class="form w-50 mx-auto mt-2">
+<form action=" " method=" POST" id="formAll" class="form w-50 mx-auto mt-2">
     <input type="hidden" name="id" id="getId">
     <input type="text" name="name" id="name" placeholder="Enter Your Name" class="form-control " required>
     <div class="row mt-3">
@@ -33,7 +33,7 @@
 </form>
 <div class="row w-50 mx-auto mt-3">
     <button type="submit" class="btn btn-primary offset-10  col-2 " id="smt">Submit</button>
-    <button type="update" class="btn btn-success offset-10 col-2 " id="update">update</button>
+
 </div>
 <div class="showAlert mt-2">
 
@@ -46,46 +46,39 @@
 <script>
     $(document).ready(function() {
 
-        $("#update").hide();
-        $("#smt").click(function() {
-            // var formdata = $("#formAll").serializeArray();
-            saveformNew()
-        })
-        // ..............
+                $("#smt").click(function() {
+                        // var formdata = $("#formAll").serializeArray();
+                        addcustomer();
+                        $("#formAll").each(function() {
+                                this.reset();
+                            });
+                        })
+                    // ..............
+                    function addcustomer() {
+                        // alert("alert");
+                        var formdata = $("#formAll").serializeArray();
+                        formdata.push({
+                            name: 'method',
+                            value: "test"
+                        });
+
+                        var post_data = formdata;
+                        var onsuccess = function(data) {
+                            $(".showAlert").html(data);
+
+                            var response = JSON.parse(data);
+
+                            if (response != "") {
+
+                                if (response.type == 1) {
 
 
+                                } else {
 
-        function saveformNew() {
-            // alert("alert");
-            var formdata = $("#formAll").serializeArray();
-            formdata.push({
-                name: 'method',
-                value: "test"
-            });
-
-            var post_data = formdata;
-            var onsuccess = function(data) {
-                $(".showAlert").html(data);
-                var response = JSON.parse(data);
-
-                if (response != "") {
-
-                    if (response.type == 1) {
-
-
-                    } else {
-
+                                }
+                            }
+                        }
+                        do_ajax_call(post_data, onsuccess, "php/insert.php");
                     }
-                }
-            }
-            do_ajax_call(post_data, onsuccess, "php/insert.php");
-        }
-
-
-
-
-
-
-
-    })
+                })
 </script>

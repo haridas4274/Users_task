@@ -26,8 +26,7 @@ foreach ($exicution['result'] as $row) {
             <button class="btn btn-warning delete" data-id="' . $row['ID'] . '">Delete</button>
         </td>
         </tr>';
-}
-;
+};
 
 echo '</table>';
 
@@ -45,13 +44,12 @@ echo '</table>';
 
                 <form action=" " method="POST" id="formUpdate" class="form w-100 mx-auto mt-5">
                     <input type="hidden" name="id" id="getId">
-                    <input type="text" name="name" id="name" placeholder="Enter Your Name" class="form-control "
-                        required>
+                    <input type="text" name="name" id="upname" placeholder="Enter Your Name" class="form-control " required>
 
                     <div class="row mt-3">
                         <div class="select col-3 gap-0">
 
-                            <select name="phonecode" id="phoneCode" class=" form-select" required>
+                            <select name="phonecode" id="upphoneCode" class=" form-select" required>
                                 <option value="">Select</option>
                                 <option value="+91">India</option>
                                 <option value="+55">Brazil</option>
@@ -63,19 +61,16 @@ echo '</table>';
 
                         </div>
                         <div class="pn col-9 ">
-                            <input type="text" name="phone" id="phone" placeholder="phone" class="form-control"
-                                required>
+                            <input type="text" name="phone" id="upphone" placeholder="phone" class="form-control" required>
                         </div>
                     </div>
-                    <input type="text" name="email" id="email" placeholder="email" class="form-control mt-3" required>
+                    <input type="text" name="email" id="upemail" placeholder="email" class="form-control mt-3" required>
                     <div class="row">
                         <div class="col-7">
-                            <input type="text" name="passport" id="passport" placeholder="Passport ID"
-                                class="form-control mt-3" minlength="12" required>
+                            <input type="text" name="passport" id="uppassport" placeholder="Passport ID" class="form-control mt-3" minlength="12" required>
                         </div>
                         <div class="col-5">
-                            <input type="date" name="exDate" id="exDate" placeholder="Expire Date" min="2023-01-01"
-                                class="form-control-plaintext form-date mt-3" required>
+                            <input type="date" name="exDate" id="upexDate" placeholder="Expire Date" min="2023-01-01" class="form-control-plaintext form-date mt-3" required>
                         </div>
                     </div>
 
@@ -88,35 +83,3 @@ echo '</table>';
         </div>
     </div>
 </div>
-
-<!-- <script src="js/jquery.js"></script> -->
-<!-- <script src="../Functions/common.js"></script> -->
-<script>
-    $(document).ready(function () {
-
-        // $('.edit').click(function ()
-        $("#tableShow").on('click','.edit', function () {
-
-            var getId = $(this).attr('data-id');
-            // alert(getId);
-            $("#exampleModal").modal('show');
-            //  $("#getId").val(getId);
-            $.ajax({
-                url: 'php/updateShow.php',
-                type: 'POST',
-                data: getId,
-                success: function(data){
-                // console.log(data);
-                
-                }
-            })
-
-
-        });
-    });
-
-
-
-</script>
-
-<!-- Modal -->

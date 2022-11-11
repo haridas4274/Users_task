@@ -344,7 +344,7 @@ function update($con, $table, $upcond, $new_field = '', $up_folder = '', $checkb
 
     }
 
-
+    $updatefield=" "; //variable not asigned
 
     if ($new_field) {
 
@@ -387,9 +387,11 @@ function update($con, $table, $upcond, $new_field = '', $up_folder = '', $checkb
 
         $reserror = mysqli_error($con);
 
+    }else{
+        $reserror="";  //error
     }
 
-    $ar = mysqli_affected_rows();
+    $ar = mysqli_affected_rows($con);  //connection not declared
 
     return array('ar' => $ar, 'errors' => $reserror);
 

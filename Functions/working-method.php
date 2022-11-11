@@ -38,7 +38,7 @@ $Inv_update = update($con, "invoice", "`id` = '$invoice_no' and `deletes`='0'", 
             if (response != "") {
 
                 if (response.type == 1) {
-
+                   
 
                 } else {
 
