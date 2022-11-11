@@ -175,8 +175,36 @@
 
             // delete row
             $("#result").on('click', '.delete', function () {
-               
+
+                var id = $(this).attr("data-id");
+                // alert("Are you sure to delete this data??");
+
+               var ok = confirm("Are you sure to delete this?");
+               if(ok==true){
+                var dltID = { id: id };
+                var onsuccess = function (data) {
+                    $.ajax({
+                        url: "php/list",
+                        type: "post",
+                        data: '',
+                        success: function (data) {
+                            // console.log(data);
+                            $("#result").html(data);
+                            $("#result").show();
+                            $("#insert").hide();
+                        }
+                    })
                 
+                }
+               }else{
+
+               }
+               
+
+                do_ajax_call(dltID, onsuccess, url = 'php/delete.php');
+
+
+
             })
 
 

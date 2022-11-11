@@ -11,7 +11,8 @@ echo '<table class="col-12 mx-auto table-bordered w-100 row" id="tableShow"><tr>
 <th>Action</th>
 </tr>';
 // $sql="SELECT * FROM `my_customers` ";
-$exicution = select_query($db, 'my_customer', '', '', '', '');
+$dlt="`deletes`=0";
+$exicution = select_query($db, 'my_customer', '', $dlt, '', '');
 
 foreach ($exicution['result'] as $row) {
 
